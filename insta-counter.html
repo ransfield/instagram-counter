@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+    <style>
+        /* Optional: Add some styles to make it look nice */
+        body {
+            text-align: center;
+            padding: 50px;
+            font-family: Arial, sans-serif;
+        }
+        #timer {
+            font-size: 2em;
+        }
+    </style>
+</head>
+<body>
+    <h1>100KM Challenge End</h1>
+    <div id="timer"></div>
+
+    <script>
+        function updateTimer() {
+            const targetDate = new Date("February 23, 2023 00:00:00").getTime();
+            
+            const currentDate = new Date().getTime();
+            
+            const remainingTime = targetDate - currentDate;
+
+            const days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+
+            document.getElementById("timer").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+
+        updateTimer();
+
+        setInterval(updateTimer, 86400000);
+    </script>
+</body>
+</html>
